@@ -13,6 +13,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.Date;
 import java.util.List;
 
+
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @DataJpaTest
@@ -20,6 +22,7 @@ public class CaseInformationRespositoryTest {
 
     @Autowired
     private  CaseInformationRespository caseInformationRespository;
+    private  CaseRepository caseRepository;
     @Test
     public void should_return_case_given_correct_case(){
         CaseInformation caseInformation=new CaseInformation("lisi driverd","zhangsan killed");
@@ -33,6 +36,22 @@ public class CaseInformationRespositoryTest {
         caseInformationRespository.save(caseInformation);
         CaseInformation caseInformation1=caseInformationRespository.findAllById(caseInformation.getId()).get();
         Assertions.assertEquals(caseInformation1,caseInformation);
+
+    }
+    @Test
+    public  void should_return_sameInfo(){
+        CaseInformation caseInformation=new CaseInformation("lisi driverd","zhangsan killed");
+        Case cs=new Case("lisi",Long.valueOf(20190717),caseInformation);
+
+        caseRepository.save(cs);
+        Case csone=caseRepository.findById(cs.getId()).get();
+        Assertions.assertEquals("{\"criminalInfomation\":{" +
+                "\"id\":2," +
+                "\"subCondition\":\"lisi driverd\"," +
+                "\"objCondition\":\"zhangsan killed\"}," +
+                "\"date\":20190717," +
+                "\"id\":1," +
+                "\"name\":\"caseone\"}",JSON.toJSONString(csone));
 
     }
 }

@@ -12,8 +12,24 @@ public class Case {
     private  String name;
     @Column(nullable = false)
     private  long caseHappenTime;
+    @OneToOne(cascade = CascadeType.ALL)
+    private  CaseInformation caseInformation;
     public  Case(){
 
+    }
+
+    public CaseInformation getCaseInformation() {
+        return caseInformation;
+    }
+
+    public void setCaseInformation(CaseInformation caseInformation) {
+        this.caseInformation = caseInformation;
+    }
+
+    public Case(String name, long caseHappenTime, CaseInformation caseInformation) {
+        this.name = name;
+        this.caseHappenTime = caseHappenTime;
+        this.caseInformation = caseInformation;
     }
 
     public Long getId() {
