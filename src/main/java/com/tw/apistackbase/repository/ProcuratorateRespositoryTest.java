@@ -1,5 +1,6 @@
 package com.tw.apistackbase.repository;
 
+import com.tw.apistackbase.entity.CaseInformation;
 import com.tw.apistackbase.entity.Procuratorate;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -26,5 +27,12 @@ public class ProcuratorateRespositoryTest {
         List<Procuratorate> procuratorates=procuratorateRespository.findAll();
         Assertions.assertEquals(2,procuratorates.size());
     }
+    @Test
+    public  void should_void_return_procuratorate_when_given_id(){
+        Procuratorate procuratorate=new Procuratorate("CHECK2");
+        procuratorateRespository.save(procuratorate);
+        Procuratorate procuratorate2=procuratorateRespository.findById(procuratorate.getId()).get();
+        Assertions.assertEquals(procuratorate,procuratorate2);
 
+    }
 }
