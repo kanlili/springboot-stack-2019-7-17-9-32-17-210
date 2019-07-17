@@ -13,6 +13,7 @@ public class CaseInformation {
     @Column(nullable = false,length = 255)
    private String objCondition;
     public  CaseInformation(){}
+
     public long getId() {
         return id;
     }
