@@ -8,4 +8,4 @@ logging:
           web: DEBUG
         hibernate: ERROR
 server:
-  port: 123
+  port: 12
