@@ -54,15 +54,24 @@ public class CaseRepositoryTest {
         Assertions.assertEquals(csoneone,csonetwo);
 
     }
-    @Test
-    public  void should_return_allContens_when_call_function_given_name(){
-        Case csone=new Case("lihua",Long.valueOf(20190717));
-        Case cstwo=new Case("lihua",Long.valueOf(20190716));
-        caseRepository.save(csone);
-        caseRepository.save(cstwo);
-        List<Case>csoneone1=caseRepository.findAll();
-        List<Case>caonene2=caseRepository.findAllByName("lihua");
-        Assertions.assertEquals(2,caonene2.size());
-    }
-
+//    @Test
+//    public  void should_return_allContens_when_call_function_given_name(){
+//        Case csone=new Case("lihua",Long.valueOf(20190717));
+//        Case cstwo=new Case("lihua",Long.valueOf(20190716));
+//        caseRepository.save(csone);
+//        caseRepository.save(cstwo);
+//        List<Case>csoneone1=caseRepository.findAll();
+//        List<Case>caonene2=caseRepository.findAllByName("lihua");
+//        Assertions.assertEquals(2,caonene2.size());
+//    }
+      @Test
+    public  void should_return_case_when_call_function(){
+          Case csone=new Case("lisi",Long.valueOf(20190717));
+          Case cstwo=new Case("zhangsan",Long.valueOf(20190717));
+          caseRepository.save(csone);
+          caseRepository.save(cstwo);
+          caseRepository.deleteById(csone.getId());
+          List<Case>csoneone=caseRepository.findAll();
+          Assertions.assertEquals(1,csoneone.size());
+      }
 }

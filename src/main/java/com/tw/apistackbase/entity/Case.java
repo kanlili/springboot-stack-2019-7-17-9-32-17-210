@@ -7,7 +7,7 @@ public class Case {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private  int id;
+    private  Long id;
     @Column(nullable = false)
     private  String name;
     @Column(nullable = false)
@@ -16,11 +16,11 @@ public class Case {
 
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
