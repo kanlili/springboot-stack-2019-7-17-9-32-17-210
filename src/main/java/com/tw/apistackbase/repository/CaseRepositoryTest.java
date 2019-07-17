@@ -29,5 +29,12 @@ public class CaseRepositoryTest {
 
         Assertions.assertEquals(1,csone.size());
     }
-
+    @Test
+    public void should_return_allContents_when_find_by_id(){
+        Case cs2=new Case("lisitwo",new Date().getTime());
+        caseRepository.save(cs2);
+        Case cstwo=caseRepository.findById(cs2.getId()).get();
+        Assertions.assertEquals(cstwo,cs2);
+    }
+    
 }
