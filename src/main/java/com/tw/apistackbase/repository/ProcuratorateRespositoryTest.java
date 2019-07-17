@@ -1,5 +1,6 @@
 package com.tw.apistackbase.repository;
 
+import com.tw.apistackbase.entity.Case;
 import com.tw.apistackbase.entity.CaseInformation;
 import com.tw.apistackbase.entity.Procuratorate;
 import org.junit.Test;
@@ -18,6 +19,7 @@ import java.util.List;
 public class ProcuratorateRespositoryTest {
     @Autowired
     private ProcuratorateRespository procuratorateRespository;
+    private  CaseRepository caseRepository;
     @Test
     public void should_void_return_procuratorate_list(){
         Procuratorate procuratorate=new Procuratorate("CHECK");
@@ -35,4 +37,14 @@ public class ProcuratorateRespositoryTest {
         Assertions.assertEquals(procuratorate,procuratorate2);
 
     }
+    @Test
+    public  void should_return_procuratorate_when_given_a_case(){
+        CaseInformation caseInformation=new CaseInformation("lisi driverd","zhangsan killed");
+        Procuratorate procuratorate=new Procuratorate("CHECKK");
+        Case cson=new Case("lisi",Long.valueOf(20190717),caseInformation,procuratorate);
+        caseRepository.save(cson);
+        List<Case> cs=caseRepository.findAll();
+        Assertions.assertEquals(1,cs.size());
+    }
+
 }

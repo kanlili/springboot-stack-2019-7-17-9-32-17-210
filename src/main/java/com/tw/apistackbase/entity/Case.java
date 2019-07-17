@@ -14,6 +14,8 @@ public class Case {
     private  long caseHappenTime;
     @OneToOne(cascade = CascadeType.ALL)
     private  CaseInformation caseInformation;
+    @OneToOne(cascade=CascadeType.ALL,optional=false)
+    private  Procuratorate procuratorate;
     public  Case(){
 
     }
@@ -30,6 +32,21 @@ public class Case {
         this.name = name;
         this.caseHappenTime = caseHappenTime;
         this.caseInformation = caseInformation;
+    }
+
+    public Case(String name, long caseHappenTime, CaseInformation caseInformation, Procuratorate procuratorate) {
+        this.name = name;
+        this.caseHappenTime = caseHappenTime;
+        this.caseInformation = caseInformation;
+        this.procuratorate = procuratorate;
+    }
+
+    public Procuratorate getProcuratorate() {
+        return procuratorate;
+    }
+
+    public void setProcuratorate(Procuratorate procuratorate) {
+        this.procuratorate = procuratorate;
     }
 
     public Long getId() {
