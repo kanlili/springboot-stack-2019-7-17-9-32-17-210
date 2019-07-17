@@ -37,7 +37,7 @@ public class CaseRepositoryTest {
     public void should_return_allContents_when_find_by_id(){
         Case cs2=new Case("lisitwo",new Date().getTime());
         caseRepository.save(cs2);
-        Case cstwo=caseRepository.findById(cs2.getId()).get();
+        Case cstwo=caseRepository.findById(Long.valueOf(cs2.getId())).get();
         Assertions.assertEquals(cstwo,cs2);
     }
     @Test
@@ -53,6 +53,16 @@ public class CaseRepositoryTest {
         reverse(csonetwo);
         Assertions.assertEquals(csoneone,csonetwo);
 
+    }
+    @Test
+    public  void should_return_allContens_when_call_function_given_name(){
+        Case csone=new Case("lihua",Long.valueOf(20190717));
+        Case cstwo=new Case("lihua",Long.valueOf(20190716));
+        caseRepository.save(csone);
+        caseRepository.save(cstwo);
+        List<Case>csoneone1=caseRepository.findAll();
+        List<Case>caonene2=caseRepository.findAllByName("lihua");
+        Assertions.assertEquals(2,caonene2.size());
     }
 
 }
