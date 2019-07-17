@@ -54,4 +54,12 @@ public class CaseInformationRespositoryTest {
                 "\"name\":\"caseone\"}",JSON.toJSONString(csone));
 
     }
+    @Test
+    public void should_return_Info_when_find(){
+        CaseInformation caseInformation=new CaseInformation("wangwu driverd","wangwu driverd");
+        caseInformationRespository.save(caseInformation);
+        CaseInformation caseInformation1=caseInformationRespository.findById(caseInformation.getId()).get();
+        Assertions.assertEquals(caseInformation,caseInformation1);
+
+    }
 }
