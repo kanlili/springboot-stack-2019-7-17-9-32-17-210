@@ -11,8 +11,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.Collections.reverse;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -36,5 +40,19 @@ public class CaseRepositoryTest {
         Case cstwo=caseRepository.findById(cs2.getId()).get();
         Assertions.assertEquals(cstwo,cs2);
     }
-    
+    @Test
+    public  void  should_return_allContends_and_desc_sort(){
+        Case csone=new Case("lisi",Long.valueOf(20190717));
+        Case cstwo=new Case("zhangsan",Long.valueOf(20190717));
+        caseRepository.save(csone);
+        caseRepository.save(cstwo);
+
+        List<Case>csoneone=caseRepository.findAll();
+
+        List<Case>csonetwo=csoneone.stream().sorted(Comparator.comparing(Case::getCaseHappenTime)).collect(Collectors.toList());
+        reverse(csonetwo);
+        Assertions.assertEquals(csoneone,csonetwo);
+
+    }
+
 }
