@@ -19,6 +19,7 @@ import java.util.List;
 public class ProcuratorateRespositoryTest {
     @Autowired
     private ProcuratorateRespository procuratorateRespository;
+    @Autowired
     private  CaseRepository caseRepository;
     @Test
     public void should_void_return_procuratorate_list(){

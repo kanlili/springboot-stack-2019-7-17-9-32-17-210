@@ -38,14 +38,14 @@ public class CaseInformationRespositoryTest {
 //        Assertions.assertEquals(caseInformation1,caseInformation);
 //
 //    }
-   // @Test
+//    @Test
 //    public  void should_return_sameInfo(){
 //        CaseInformation caseInformation=new CaseInformation("lisi driverd","zhangsan killed");
 //        Case cs=new Case("lisi",Long.valueOf(20190717),caseInformation);
 //
 //        caseRepository.save(cs);
 //        Case csone=caseRepository.findById(cs.getId()).get();
-//        Assertions.assertEquals("{\"criminalInfomation\":{" +
+//        Assertions.assertEquals("{\"caseInfomation\":{" +
 //                "\"id\":2," +
 //                "\"subCondition\":\"lisi driverd\"," +
 //                "\"objCondition\":\"zhangsan killed\"}," +
